@@ -15,9 +15,10 @@ The extension was forked from https://github.com/benparsons/showbacklinks and up
 wfLoadExtension( 'ShowBackLinks' );
 ```
 
-## Known Issues
+## Configuration (extension.json)
 
-- There are no options at the moment
+- Enable or disable message about no backlinks for article
+ - config.ShowNoBacklinksInfo = true/false
 
 ## Support
 
