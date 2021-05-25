@@ -43,9 +43,12 @@ class ShowBackLinksHooks
             }
             $text .= "* [[" . $t->getText() . "]]\n";
         }
+	    
         if (strlen($text) == 0) {
-            $text = wfMessage('showbacklinks-no-backlinks')->text();
+		if(!$wgShowNoBacklinksInfo) return;
+		$text = wfMessage('showbacklinks-no-backlinks')->text();
         }
+	    
         $text = $text . "</div>";
 
 		$parser  = \MediaWiki\MediaWikiServices::getInstance()->getParser();
