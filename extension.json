@@ -9,6 +9,9 @@
   "descriptionmsg": "showbacklinks-description",
   "license-name": "AGPL v3",
   "type": "other",
+  "config": {
+	"ShowNoBacklinksInfo": false
+  },
   "MessagesDirs": {
     "ShowBackLinks": ["i18n"]
   },

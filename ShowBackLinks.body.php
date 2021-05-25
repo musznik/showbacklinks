@@ -5,10 +5,10 @@ class ShowBackLinksHooks
 
     public static function onSkinAfterContent(&$data, Skin $skin)
     {
-        global $wgOut, $wgTitle;
+        global $wgOut, $wgTitle, $wgShowNoBacklinksInfo;
 	    
-	if($wgTitle->isSpecialPage())
-		return; 
+		if($wgTitle->isSpecialPage())
+			return; 
 	    
         $tMain = Title::newFromText(wfMessage("mainpage")->text());
         $linksTitlePrefix = "== " . wfMessage("whatlinkshere")->text() . " ==";
@@ -43,9 +43,12 @@ class ShowBackLinksHooks
             }
             $text .= "* [[" . $t->getText() . "]]\n";
         }
+		
         if (strlen($text) == 0) {
+			if(!$wgShowNoBacklinksInfo) return;
             $text = wfMessage('showbacklinks-no-backlinks')->text();
         }
+		
         $text = $text . "</div>";
 
 		$parser  = \MediaWiki\MediaWikiServices::getInstance()->getParser();
